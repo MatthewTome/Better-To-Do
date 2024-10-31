@@ -85,7 +85,7 @@ fun RegisterScreen(
         ) {
             RegisterHeader()
             NewUserField("Email", false, onEmailChanged)
-            NewUserField("Password", true, onPasswordChanged)
+            NewUserField("Password", false, onPasswordChanged)
         }
 
 
@@ -209,7 +209,7 @@ fun RegisterButton(
 fun ReturningUserButton() {
     val context = LocalContext.current
 
-    val loginActivityLauncher = rememberLauncherForActivityResult(
+    val registerActivityLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.StartActivityForResult()
     ) { activityResult ->
         // Handle the result if needed
@@ -217,8 +217,8 @@ fun ReturningUserButton() {
 
     Button(
         onClick = {
-            val intent = Intent(context, Login::class.java)
-            loginActivityLauncher.launch(intent)
+            val intent = Intent(context, Register::class.java)
+            registerActivityLauncher.launch(intent)
         },
         modifier = Modifier.fillMaxWidth()
     ) {

@@ -1,6 +1,6 @@
 package com.example.betterto_do.ui.theme
 
-import androidx.appcompat.app.AppCompatActivity
+import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -16,22 +16,15 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 val DarkColorScheme = darkColorScheme(
-    primary = mediumRedViolet,
-    secondary = frenchPink,
-    tertiary = gunmetal,
-    background = white,
-    surface = limeGreen,
-    onBackground = amber,
-
+    primary = Purple80,
+    secondary = PurpleGrey80,
+    tertiary = Pink80
 )
 
 val LightColorScheme = lightColorScheme(
-    primary = mediumRedViolet,
-    secondary = frenchPink,
-    tertiary = gunmetal,
-    background = white,
-    surface = limeGreen,
-    onBackground = amber,
+    primary = Purple40,
+    secondary = PurpleGrey40,
+    tertiary = Pink40
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
@@ -61,11 +54,12 @@ fun BetterToDoTheme(
         else -> LightColorScheme
     }
     val view = LocalView.current
-    val context = view.context
-    if (context is AppCompatActivity) {
-        val window = context.window
-        window.statusBarColor = colorScheme.primary.toArgb()
-        WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
+    if (!view.isInEditMode) {
+        SideEffect {
+            val window = (view.context as Activity).window
+            window.statusBarColor = colorScheme.primary.toArgb()
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
+        }
     }
 
     MaterialTheme(

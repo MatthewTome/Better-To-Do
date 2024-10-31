@@ -6,7 +6,9 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:background">@color/mainBackground</item>
+        <item name="android:textColorPrimary">@color/white</item>
     </style>
 
-
+    <style name="Theme.BetterToDo" parent="android:Theme.Material.Light.NoActionBar" />
 </resources>
